@@ -1,73 +1,73 @@
-// import { ScrollView, StyleSheet } from 'react-native';
-// import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-// import Header from './components/Header';
-// import Products from './components/Products';
-
-// function App() {
-//   return (
-//     <SafeAreaProvider>
-//       <SafeAreaView>
-//         <Header />
-//         <ScrollView>
-//           <Products />
-//         </ScrollView>
-//       </SafeAreaView>
-//     </SafeAreaProvider>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {},
-// });
-
-// export default App;
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeBottomTabNavigator } from '@react-navigation/bottom-tabs/unstable';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Header from './components/Header';
 import Products from './components/Products';
 
-const Tab = createNativeBottomTabNavigator();
-
-function HomeScreen() {
+function App() {
   return (
-    <ScrollView>
-      <Header />
-      <Products />
-    </ScrollView>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <Header />
+        <ScrollView>
+          <Products />
+        </ScrollView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
-function SettingsScreen() {
-  return (
-    <View>
-      <Text>Settings</Text>
-    </View>
-  );
-}
+const styles = StyleSheet.create({
+  container: {flex: 1},
+});
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused }) => ({
-            type: 'sfSymbol' as const,
-            name:
-              route.name === 'Home'
-                ? focused
-                  ? ('house.fill' as const)
-                  : ('house' as const)
-                : focused
-                ? ('gearshape.fill' as const)
-                : ('gearshape' as const),
-          }),
-        })}
-      >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
-}
+export default App;
+
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeBottomTabNavigator } from '@react-navigation/bottom-tabs/unstable';
+// import { ScrollView, Text, View } from 'react-native';
+// import Header from './components/Header';
+// import Products from './components/Products';
+
+// const Tab = createNativeBottomTabNavigator();
+
+// function HomeScreen() {
+//   return (
+//     <ScrollView>
+//       <Header />
+//       <Products />
+//     </ScrollView>
+//   );
+// }
+
+// function SettingsScreen() {
+//   return (
+//     <View>
+//       <Text>Settings</Text>
+//     </View>
+//   );
+// }
+
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <Tab.Navigator
+//         screenOptions={({ route }) => ({
+//           tabBarIcon: ({ focused }) => ({
+//             type: 'sfSymbol' as const,
+//             name:
+//               route.name === 'Home'
+//                 ? focused
+//                   ? ('house.fill' as const)
+//                   : ('house' as const)
+//                 : focused
+//                 ? ('gearshape.fill' as const)
+//                 : ('gearshape' as const),
+//           }),
+//         })}
+//       >
+//         <Tab.Screen name="Home" component={HomeScreen} />
+//         <Tab.Screen name="Settings" component={SettingsScreen} />
+//       </Tab.Navigator>
+//     </NavigationContainer>
+//   );
+// }
