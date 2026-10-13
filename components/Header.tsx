@@ -1,14 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 export default function Header() {
-  const [cartItem, setCartItem] = useState(0);
-  const cartData = useSelector((state)=>state.reducer)
+  const cartData = useSelector((state:any)=>state.reducer)
+  const cartItem = cartData.length;
   console.warn(cartData);
-  useEffect(()=>{
-    setCartItem(cartData.length)
-  },[cartData])
   
   return (
     <View style={styles.container}>
