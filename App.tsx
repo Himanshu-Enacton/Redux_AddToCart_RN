@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+
 import ProductWrapper from './components/ProductWrapper';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
