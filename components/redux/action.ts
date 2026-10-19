@@ -1,4 +1,4 @@
-import { Item } from '../Products';
+import type { Item } from '../Products';
 import {ADD_TO_CART, REMOVE_TO_CART} from './constants';
 
 export function addToCart(item: Item){
@@ -7,9 +7,9 @@ export function addToCart(item: Item){
         data:item
     }
 }
-export function removeToCart(item: Item){
+export function removeToCart(itemId: number){
     return {
         type:REMOVE_TO_CART,
-        data:item
+        data:itemId
     }
 }

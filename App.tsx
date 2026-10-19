@@ -1,25 +1,25 @@
-import { ScrollView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import ProductWrapper from './components/ProductWrapper';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import CartList from './components/CartList';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import Header from './components/Header';
-import Products from './components/Products';
 
+const Stack = createNativeStackNavigator();
 function App() {
-  
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <Header />
-        <ScrollView>
-          <Products />
-        </ScrollView>
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Home" component={ProductWrapper} />
+            <Stack.Screen name="List" component={CartList} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </SafeAreaView>
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {flex: 1},
-});
 
 export default App;
 
