@@ -19,7 +19,15 @@ export default function CartList({ navigation }: { navigation: any }) {
   const handleAddToCart = (item: Item) => {
     dispatch(addToCart(item));
   };
-  const handleRemoveFromCart = (id: number) => {
+  const handleRemoveFromCart = (id: number,//quantity: number
+    ) => {
+    // if(quantity===1){
+    //   setTimeout(()=>{
+    //     dispatch(removeToCart(id))
+    //   }, 2000)
+    // }else{
+    //   dispatch(removeToCart(id));
+    // }
     dispatch(removeToCart(id));
   };
 
@@ -32,7 +40,9 @@ export default function CartList({ navigation }: { navigation: any }) {
         >
           <Text style={styles.backArrow}>‹</Text>
         </TouchableOpacity>
-        <Text pointerEvents="none" style={styles.headerTitle}>My Cart</Text>
+        <Text pointerEvents="none" style={styles.headerTitle}>
+          My Cart
+        </Text>
         <View style={styles.checkoutPill}>
           <Text style={styles.checkoutText}>Checkout</Text>
         </View>
@@ -68,19 +78,20 @@ export default function CartList({ navigation }: { navigation: any }) {
                 <Text style={styles.deleteIcon}>♧</Text>
                 <View style={styles.quantityRow}>
                   <TouchableOpacity
-                    onPress={() => handleAddToCart(item)}
-                    style={styles.quantityButton}
-                    activeOpacity={0.7}
-                  >
-                    <Text style={styles.quantitySymbol}>+</Text>
-                  </TouchableOpacity>
-                  <Text style={styles.quantity}>{item.quantity}</Text>
-                  <TouchableOpacity
-                    onPress={() => handleRemoveFromCart(item.id)}
+                    onPress={() => handleRemoveFromCart(item.id,//item.quantity
+                      )}
                     style={styles.quantityButton}
                     activeOpacity={0.7}
                   >
                     <Text style={styles.quantitySymbol}>−</Text>
+                  </TouchableOpacity>
+                  <Text style={styles.quantity}>{item.quantity}</Text>
+                  <TouchableOpacity
+                    onPress={() => {handleAddToCart(item);}}
+                    style={styles.quantityButton}
+                    activeOpacity={0.7}
+                  >
+                    <Text style={styles.quantitySymbol}>+</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -91,8 +102,8 @@ export default function CartList({ navigation }: { navigation: any }) {
 
       <View style={styles.footer}>
         <Text style={styles.total}>
-          Total (
-          {cartItems.reduce((total, item) => total + item.quantity, 0)} items)
+          Total ({cartItems.reduce((total, item) => total + item.quantity, 0)}{' '}
+          items)
         </Text>
         <View style={styles.continueButton}>
           <Text style={styles.continueText}>Continue to Checkout</Text>

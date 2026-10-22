@@ -3,9 +3,9 @@ import React from 'react';
 import Header from './Header';
 import Products from './Products';
 
-export default function ProductWrapper({ navigation }) {
+export default function ProductWrapper({ navigation }:any) {
   return (
-    <View style={{flex:1}}>
+    <View style={styles.flex}>
       <Header navigation={navigation} />
       <ScrollView>
         <Products />
@@ -13,5 +13,6 @@ export default function ProductWrapper({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  flex:{flex:1},
+})
